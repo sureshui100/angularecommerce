@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AppService } from '../../../../core/http/app.service';
 
 @Component({
   selector: 'app-restaurantlist',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RestaurantlistComponent implements OnInit {
 
-  constructor() { }
+  public restList;
+  
+  constructor(public _zomatoservice:AppService) { }
 
   ngOnInit() {
+    this._zomatoservice.getrestaurant()
+    .subscribe(data => this.restList = data.restaurants)
+    
   }
+  
 
 }
