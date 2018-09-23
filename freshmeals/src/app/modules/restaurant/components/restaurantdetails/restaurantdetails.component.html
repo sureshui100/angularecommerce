@@ -1,3 +1,24 @@
-<p>
-  restaurantdetails works!
-</p>
+
+<div class="restDetails">
+  <section class="restheader">
+      <div class="container">
+        <div class="row">
+          <div class="col-auto featuredImg" >
+              <img [src]="restdetails.featured_image" />
+          </div>
+          <div class="col">
+            <h1 class="nomargin">{{restdetails.name}}</h1>
+            <p class="text-bold">{{restdetails.user_rating.aggregate_rating}} <span style="color:#febf00;"><i class="fa fa-star" aria-hidden="true"></i></span> - <span class="text-bold" [style.color]="'#'+ restdetails.user_rating.rating_color">{{restdetails.user_rating.rating_text}}</span>({{restdetails.user_rating.votes}})</p>
+
+
+            <p class="location nomargin">{{restdetails.location.address}}</p>
+            <h5>{{restdetails.cuisines}}</h5>
+   
+          </div>
+
+        </div>
+        
+      </div>
+    </section>
+
+</div>

@@ -1,9 +1,26 @@
-<section class="row">
-  <aside class="col-auto"></aside>
-  <section class="row">
-    <div class="col-xs-12 col-sm-4 col-md-3" *ngFor="let res of restList">
-      {{res.restaurant.name}}
-    </div>
+<section class="container-fluid restaurantListContainer" >
+  <div class="row">
+    
+    <section class="col restGrid">
+      <div class="search">
+        <div class="row">
+          <div class="col"></div>
+        </div>
 
-  </section>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-sm-3 " *ngFor="let res of restList">
+          <div class="restGridBox" (click)="onselect(res)">
+            <div class="r-food-img"><img src="{{res.restaurant.featured_image}}" /></div>
+            <div class="rg-cont">
+              
+              <h5>{{res.restaurant.name}}</h5>
+              <p>{{res.restaurant.location.address}}</p>
+              <h6><i class="fa fa-spoon" aria-hidden="true"></i> {{res.restaurant.cuisines}}</h6>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
 </section>

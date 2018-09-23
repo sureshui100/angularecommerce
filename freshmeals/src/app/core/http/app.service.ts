@@ -4,18 +4,24 @@ import { HttpHeaders } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
 
+import { myconfig } from '../constants/config';
+
 @Injectable({
   providedIn: 'root'
 })
 export class AppService {
-  apiKey = '0e5bcd9594308224c4a94920930e5757';
-  private _url = "https://developers.zomato.com/api/v2.1/search";
+  
   constructor(public http:HttpClient) { }
 
-  getrestaurant():Observable<any>{
+  getrestaurantlist():Observable<any>{
     let headers = new HttpHeaders()
-    headers = headers.set('user-key', this.apiKey)
-    return this.http.get(this._url,{headers: headers});
+    headers = headers.set('user-key', myconfig.zomato.apikey)
+    return this.http.get(`${myconfig.zomato.zomatoUrl}/search?q=indian&lat=13.067439&lon=80.237617&radius=5000&cuisines=italian%2C%20Cafe&sort=cost`,{headers: headers});
+  }
+  getrestaurant(restid):Observable<any>{
+    let headers = new HttpHeaders()
+    headers = headers.set('user-key', myconfig.zomato.apikey)
+    return this.http.get(`${myconfig.zomato.zomatoUrl}/restaurant?res_id=${restid}`,{headers: headers});
   }
 
 }
